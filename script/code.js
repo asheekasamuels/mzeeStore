@@ -49,8 +49,11 @@ let products =
         ]
     )
 )
-
+// current year
+let currentyear = new Date().getUTCFullYear()
+document.querySelector('[currentYear]').textContent = currentyear
 function recentProducts() {
+  try {
     let arrSize = products.length
     let latestProducts = products.reverse().slice(0, arrSize >> 1)
     latestProducts.forEach(product => {
@@ -65,5 +68,9 @@ function recentProducts() {
            </div>
         `
     })
+
+  } catch (error) {
+    wrapper.textContent ="please contact our administrator"
+  }
 }
-recentProducts()
+recentProducts();
